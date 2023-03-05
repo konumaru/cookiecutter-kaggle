@@ -1,11 +1,6 @@
 {
-  "email": "konumaru1022@gmail.com",
-  "github_username": "konumaru",
-  "project_name": "Kaggle Workspace",
+  "project_name": "Kaggle Competition Name",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Kaggle Workspace is env for kaggle competition.",
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "version": "0.1.0",
-  "use_pytest": "n",
-  "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"]
 }
