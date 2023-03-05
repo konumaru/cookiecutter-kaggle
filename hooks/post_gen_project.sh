@@ -1,1 +1,1 @@
-cp .env.template .env
+touch .env
