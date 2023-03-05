@@ -1,4 +1,6 @@
 {
+  "email": "konumaru1022@gmail.com",
+  "github_username": "konumaru",
   "project_name": "Kaggle Competition Name",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Kaggle Workspace is env for kaggle competition.",
