@@ -1,5 +1,4 @@
 {
   "competition_name": "Kaggle Workspace",
   "project_slug": "{{ cookiecutter.competition_name.lower().replace(' ', '_').replace('-', '_') }}",
-  "project_short_description": "Kaggle Workspace is env for kaggle competition."
 }
