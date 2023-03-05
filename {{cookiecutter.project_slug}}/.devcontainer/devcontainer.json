@@ -1,8 +1,6 @@
 {
   "name": "kaggle-container",
-  "dockerComposeFile": [
-    "../docker-compose.yml"
-  ],
+  "dockerComposeFile": ["../docker-compose.yml"],
   "service": "kaggle_env",
   "workspaceFolder": "/workspace",
   "extensions": [
@@ -55,9 +53,7 @@
     "python.linting.mypyPath": "/usr/local/bin/mypy",
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "/usr/local/bin/black",
-    "isort.path": [
-      "/usr/local/bin/isort"
-    ],
+    "isort.path": ["/usr/local/bin/isort"],
     "python.testing.cwd": "${workspaceFolder}",
     "autoDocstring.docstringFormat": "google",
     // Makefile
