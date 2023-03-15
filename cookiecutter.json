@@ -1,4 +1,5 @@
 {
   "competition_name": "Kaggle Workspace",
+  "competition_url_name": "",
   "project_slug": "{{ cookiecutter.competition_name.lower().replace(' ', '_').replace('-', '_') }}"
 }

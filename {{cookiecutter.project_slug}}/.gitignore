@@ -130,7 +130,8 @@ dmypy.json
 
 # Custom
 .envrc
+data/.hydra/
 *.csv
+*.txt
 *.pkl
 *.npy
-

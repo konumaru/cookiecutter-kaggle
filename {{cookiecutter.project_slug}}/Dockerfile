@@ -13,8 +13,8 @@ RUN apt install -y \
     python3-dev
 
 RUN pip install -U pip
-RUN pip install flake8 black isort autoflake
-RUN pip install iterative-stratification
+RUN pip install black isort mypy pyproject-flake8
+RUN pip install iterative-stratification hydra-core
 
 # Setting jupyter_notebook_config
 RUN jupyter notebook --generate-config
