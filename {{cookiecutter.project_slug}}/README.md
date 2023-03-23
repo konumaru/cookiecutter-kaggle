@@ -5,5 +5,6 @@
 
 Kaggle Workspace is env for kaggle competition.
 
-Leaderboard:
-Discussion:
+Leaderboard: [Link](https://www.kaggle.com/competitions/{{cookiecutter.competition_url_name}}/leaderboard)
+
+Discussion: [Link](https://www.kaggle.com/competitions/{{cookiecutter.competition_url_name}}/discussion?sort=published)
