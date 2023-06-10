@@ -3,10 +3,10 @@ from typing import Any, Union
 
 import hydra
 import numpy as np
-from omegaconf import OmegaConf
+from omegaconf import DictConfig, OmegaConf
 from sklearn.ensemble import RandomForestRegressor
 
-from config import Config
+from utils import timer
 from utils.io import load_pickle, save_pickle
 
 
@@ -48,10 +48,14 @@ def predict(
     return pred
 
 
-@hydra.main(version_base=None, config_name="config")
-def main(cfg: Config) -> None:
+@hydra.main(
+    config_path="../config", config_name="config.yaml", version_base="1.3"
+)
+def main(cfg: DictConfig) -> None:
     print(OmegaConf.to_yaml(cfg))
+    print("Hello Workd!")
 
 
 if __name__ == "__main__":
-    main()
+    with timer("main.py"):
+        main()
