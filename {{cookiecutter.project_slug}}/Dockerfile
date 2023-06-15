@@ -12,8 +12,11 @@ RUN apt install -y \
     libffi-dev \
     python3-dev
 
+RUN echo "source /etc/bash_completion" >> /root/.bashrc
+
 RUN pip install -U pip
 RUN pip install black isort mypy pyproject-flake8
+RUN pip install pytest-cov
 RUN pip install iterative-stratification hydra-core
 
 # Setting jupyter_notebook_config
@@ -27,3 +30,4 @@ RUN echo "c.NotebookApp.password = ''" >> /root/.jupyter/jupyter_notebook_config
 RUN git config --global user.email "konumaru1022@gmail.com"
 RUN git config --global user.name "konumaru"
 RUN git config --global --add safe.directory /workspace
+

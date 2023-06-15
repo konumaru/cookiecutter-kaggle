@@ -129,9 +129,12 @@ dmypy.json
 .pyre/
 
 # Custom
+.env
 .envrc
 data/.hydra/
 *.csv
 *.txt
 *.pkl
+*.pth
+*.parquet
 *.npy

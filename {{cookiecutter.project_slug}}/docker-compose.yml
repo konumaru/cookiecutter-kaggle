@@ -10,6 +10,7 @@ services:
     ports:
       - 10000:10000
     command: jupyter lab --port=10000 --ip=0.0.0.0 --allow-root --no-browser
+    tty: true
     deploy:
       resources:
         reservations:
