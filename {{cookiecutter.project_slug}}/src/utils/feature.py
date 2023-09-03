@@ -2,15 +2,13 @@ import functools
 import os
 import pathlib
 import pickle
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Union
 
 import numpy as np
 
-
 def feature(
     save_dir: str,
-    use_cache: bool = True,
-    is_saved: bool = True,
+    use_cache: bool = True
 ) -> Callable:
     def wrapper(func: Callable) -> Callable:
         @functools.wraps(func)
@@ -29,9 +27,8 @@ def feature(
 
 
             assert result.ndim == 2, "Feature dim must be 2d."
-            if is_saved:
-                with open(filepath, "wb") as file:
-                    pickle.dump(result, file)
+            with open(filepath, "wb") as file:
+                pickle.dump(result, file)
 
             return result
 
@@ -40,8 +37,13 @@ def feature(
     return wrapper
 
 
-def load_feature(dirpath: str, feature_names: List[str]) -> np.ndarray:
-    saved_dir = pathlib.Path(dirpath)
+def load_feature(
+    dirpath: Union[str, pathlib.Path], feature_names: List[str]
+) -> np.ndarray:
+    if isinstance(dirpath, str):
+        saved_dir = pathlib.Path(dirpath)
+    else:
+        saved_dir = dirpath
 
     feats = []
     for feature_name in feature_names:

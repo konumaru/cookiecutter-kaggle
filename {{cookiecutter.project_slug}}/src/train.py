@@ -11,7 +11,7 @@ from utils.io import load_pickle, save_pickle
 
 
 def get_model(model_name: str = "rf", seed: int = 42) -> Any:
-    return RandomForestRegressor()
+    return RandomForestRegressor(n_estimators=100, random_state=seed)
 
 
 def train(
