@@ -36,6 +36,19 @@ download_dataset() {
     rm "$DIR_NAME.zip"
 }
 
+download_kernels_dataset() {
+    DATASET_NAME=$1
+    IFS='/' read -ra ARR <<< "$DATASET_NAME"
+    DIR_NAME="${ARR[1]}"
+
+    mkdir -p data/
+    mkdir -p data/external
+
+    # Download dataset data
+    kaggle kernels output $DATASET_NAME -p data/external/$DIR_NAME
+}
+
+
 # Download competitoin data.
 download_competition {{cookiecutter.competition_url_name}}
 

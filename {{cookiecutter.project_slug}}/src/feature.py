@@ -9,24 +9,32 @@ FEATURE_DIR = "./data/feature"
 
 
 @feature(FEATURE_DIR)
-def dummpy_feature() -> np.ndarray:
-    data = np.zeros((5, 100))
+def dummy_target() -> np.ndarray:
+    target = (np.random.rand(100) < 0.2).astype(int)
+    return target.reshape(-1, 1)
+
+
+@feature(FEATURE_DIR)
+def dummy_feature() -> np.ndarray:
+    data = np.zeros((100, 5))
     return data
+
 
 @hydra.main(
     config_path="../config", config_name="config.yaml", version_base="1.3"
 )
 def main(cfg: DictConfig) -> None:
     print(OmegaConf.to_yaml(cfg))
-    feat_funcs = [
-        dummpy_feature,
-    ]
 
+    dummy_target()
+
+    feat_funcs = [
+        dummy_feature,
+    ]
     for func in feat_funcs:
         func()
 
 
-
 if __name__ == "__main__":
-    with timer("main.py"):
+    with timer("feature.py"):
         main()

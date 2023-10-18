@@ -8,6 +8,18 @@ n_splits: 5
 debug: False
 is_eval: True
 
+path:
+  raw: ./data/raw
+  preprocessed: ./data/preprocessed
+  feature: ./data/feature
+  model: ./data/model
+  train: ./data/train
+  external: ./data/external
+
+target_name: dummy_target
+feature_names:
+  - dummy_feature
+
 defaults:
   - _self_
   - model: xgb
