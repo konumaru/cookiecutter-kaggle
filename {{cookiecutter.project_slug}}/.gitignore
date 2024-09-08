@@ -138,3 +138,9 @@ data/.hydra/
 *.pth
 *.parquet
 *.npy
+
+# hydra
+multirun/
+
+# virtual documents
+.virtual_documents

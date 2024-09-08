@@ -6,6 +6,9 @@ help: # Show help for each of the Makefile recipes.
 
 .PHONY: init
 init: # Download the data and initialize the project.
+	@echo "Initializing project..."
+	cp .env.example .env
+
 	@echo "Downloading data..."
 	./bin/download.sh
 

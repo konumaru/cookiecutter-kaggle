@@ -1,7 +1,6 @@
 import pathlib
 from typing import Union
 
-
 import hydra
 import lightgbm
 import numpy as np

@@ -4,9 +4,7 @@ from omegaconf import DictConfig, OmegaConf
 from utils import timer
 
 
-@hydra.main(
-    config_path="../config", config_name="config.yaml", version_base="1.3"
-)
+@hydra.main(config_path="../config", config_name="config.yaml", version_base="1.3")
 def main(cfg: DictConfig) -> None:
     print(OmegaConf.to_yaml(cfg))
     print("Hello Workd!")
