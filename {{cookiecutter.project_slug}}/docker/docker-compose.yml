@@ -2,7 +2,7 @@ services:
   kaggle_env:
     build: .
     env_file:
-      - .env
+      - ../.env
     volumes:
       - ..:/workspace
     working_dir: /workspace
