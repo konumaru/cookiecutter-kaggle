@@ -1,0 +1,16 @@
+services:
+  kaggle_env:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]

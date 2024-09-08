@@ -1,0 +1,11 @@
+services:
+  kaggle_env:
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    env_file:
+      - ../.env.example
+    volumes:
+      - ..:/workspace
+    working_dir: /workspace
+    tty: true
