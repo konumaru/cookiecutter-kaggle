@@ -1,8 +1,10 @@
 services:
   kaggle_env:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     env_file:
-      - .env
+      - .envrc
     volumes:
       - ..:/workspace
     working_dir: /workspace

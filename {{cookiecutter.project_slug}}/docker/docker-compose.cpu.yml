@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.cpu
     env_file:
-      - ../.env.example
+      - ../.envrc
     volumes:
       - ..:/workspace
     working_dir: /workspace
