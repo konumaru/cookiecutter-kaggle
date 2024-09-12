@@ -7,7 +7,7 @@ help: # Show help for each of the Makefile recipes.
 .PHONY: init
 init: # Initialize the project.
 	@echo "Initializing project..."
-	cp .env.example .env
+	cp .envrc.example .envrc
 
 .PHONY: dl
 dl: # Download the data and initialize the project.

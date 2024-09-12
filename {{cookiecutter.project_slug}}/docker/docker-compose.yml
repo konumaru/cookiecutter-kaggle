@@ -4,7 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
     env_file:
+<<<<<<< HEAD
       - .envrc
+=======
+      - ../.env
+>>>>>>> 5d7d4451b15c010baacad2aaf9e02d7bd1824e76
     volumes:
       - ..:/workspace
     working_dir: /workspace
