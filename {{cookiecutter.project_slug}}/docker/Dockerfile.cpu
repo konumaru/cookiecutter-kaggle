@@ -18,3 +18,7 @@ RUN pip install -U pip
 RUN pip install ruff
 RUN pip install pytest-cov
 RUN pip install iterative-stratification hydra-core
+
+RUN git config --global user.email "konumaru1022@gmail.com"
+RUN git config --global user.name "konumaru"
+RUN git config --global --add safe.directory /workspace
