@@ -138,6 +138,9 @@ data/.hydra/
 *.pth
 *.parquet
 *.npy
+*.json
+*.joblib
+*.cbm
 
 # hydra
 multirun/

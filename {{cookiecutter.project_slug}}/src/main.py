@@ -1,3 +1,5 @@
+import os
+
 import hydra
 from omegaconf import DictConfig, OmegaConf
 
@@ -13,5 +15,5 @@ def main(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
-    with timer("main.py"):
+    with timer(os.path.basename(__file__)):
         main()

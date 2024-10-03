@@ -1,4 +1,0 @@
-name: rf
-
-params:
-  n_estimators: 100

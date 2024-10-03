@@ -1,5 +1,5 @@
 {
-  "name": "kaggle-container",
+  "name": "kaggle-container-{{cookiecutter.project_slug}}",
   "service": "kaggle_env",
   "dockerComposeFile": [
     "../docker/docker-compose.cpu.yml"
@@ -17,7 +17,8 @@
         "ms-toolsai.jupyter",
         "yzhang.markdown-all-in-one",
         "DavidAnson.vscode-markdownlint",
-        "njpwerner.autodocstring"
+        "njpwerner.autodocstring",
+        "bierner.markdown-mermaid"
       ],
       "settings": {
         "editor.formatOnSave": true,

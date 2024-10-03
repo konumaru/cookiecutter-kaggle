@@ -9,12 +9,30 @@ Kaggle Workspace is env for kaggle competition.
 
 ## Solution
 
+### Overview
+
+```mermaid
+graph TR
+    A[Data] --> B[Preprocessing]
+    B --> C[Feature Engineering]
+    C --> D[Modeling]
+    D --> E[Evaluation]
+```
+
 ## Experiment
 
 | EXP_ID | Local CV | Public LB | Note |
 | :---: | :---: | :---: | :--- |
-| 1 | 0.6687954845101823 | 0.599 | rf with simple feature |
+| 1 | 0.0 | 0.0 | rf with simple feature |
 
 ## Not worked for me
+
+- `feature engineering`
+- `model selection`
+- `hyperparameter tuning`
+- `ensemble`
+- `stacking`
+
+## Ideas
 
 - hogehoge

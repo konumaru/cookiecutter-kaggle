@@ -1,15 +1,28 @@
-import hydra
-from omegaconf import DictConfig, OmegaConf
+import os
 
+import pandas as pd
+from sklearn.datasets import load_diabetes
+
+from config import Config
 from utils import timer
 
 
-@hydra.main(config_path="../config", config_name="config.yaml", version_base="1.3")
-def main(cfg: DictConfig) -> None:
-    print(OmegaConf.to_yaml(cfg))
-    print("Hello Workd!")
+def main() -> None:
+    config = Config()
+    print(config.model_dump_json(indent=4))
+
+    X, y = load_diabetes(return_X_y=True, as_frame=True)
+
+    raw_data: pd.DataFrame = X.copy()  # type: ignore
+    raw_data[config.target_name] = y
+
+    print(raw_data.head())
+
+    raw_data.to_parquet(
+        os.path.join(config.dirpath.preprocessing, "data.parquet")
+    )
 
 
 if __name__ == "__main__":
-    with timer("preprocessing.py"):
+    with timer(os.path.basename(__file__)):
         main()

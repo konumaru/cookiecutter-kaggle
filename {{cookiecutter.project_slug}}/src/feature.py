@@ -1,40 +1,70 @@
-import hydra
+import os
+
 import numpy as np
-from omegaconf import DictConfig, OmegaConf
+import pandas as pd
+from sklearn.model_selection import KFold
 
+from config import Config
 from utils import timer
-from utils.feature import feature
+from utils.feature import cache
 
-FEATURE_DIR = "./data/feature"
+FEATURE_DIR = Config().dirpath.feature
 
-
-@feature(FEATURE_DIR)
-def dummy_target() -> np.ndarray:
-    target = (np.random.rand(100) < 0.2).astype(int)
-    return target.reshape(-1, 1)
+# =====================
+# Target
+# =====================
 
 
-@feature(FEATURE_DIR)
-def dummy_feature() -> np.ndarray:
-    data = np.zeros((100, 5))
-    return data
+@cache(FEATURE_DIR)
+def target() -> np.ndarray:
+    data = pd.read_parquet(
+        os.path.join(Config().dirpath.preprocessing, "data.parquet")
+    )
+    return data[[Config().target_name]].to_numpy()
 
 
-@hydra.main(
-    config_path="../config", config_name="config.yaml", version_base="1.3"
-)
-def main(cfg: DictConfig) -> None:
-    print(OmegaConf.to_yaml(cfg))
+# =====================
+# Fold
+# =====================
+@cache(FEATURE_DIR)
+def fold(cfg: Config) -> np.ndarray:
+    X = pd.read_parquet(
+        os.path.join(Config().dirpath.preprocessing, "data.parquet")
+    )
+    y = X[[Config().target_name]]
 
-    dummy_target()
+    result = np.zeros(len(y))
+    cv = KFold(n_splits=cfg.n_splits, shuffle=True, random_state=cfg.seed)
+    for i, (_, valid_idx) in enumerate(cv.split(X, y)):
+        result[valid_idx] = i
+
+    return result.reshape(-1, 1)
+
+
+# =====================
+# Feature
+# =====================
+
+
+@cache(FEATURE_DIR)
+def basic_features() -> np.ndarray:
+    data = pd.read_parquet(
+        os.path.join(Config().dirpath.preprocessing, "data.parquet")
+    )
+    return data.drop(Config().target_name, axis=1).to_numpy()
+
+
+def main() -> None:
+    target()
+    fold(Config())
 
     feat_funcs = [
-        dummy_feature,
+        basic_features,
     ]
     for func in feat_funcs:
         func()
 
 
 if __name__ == "__main__":
-    with timer("feature.py"):
+    with timer(os.path.basename(__file__)):
         main()
