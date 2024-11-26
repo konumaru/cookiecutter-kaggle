@@ -1,10 +1,10 @@
 services:
-  kaggle_env:
+  kaggle_env_gpu:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.gpu
     env_file:
-      - ../.env
+      - ../.envrc
     volumes:
       - ..:/workspace
     working_dir: /workspace
