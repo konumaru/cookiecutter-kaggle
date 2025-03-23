@@ -1,11 +1,13 @@
 services:
   kaggle_env:
+    container_name: kaggle_project_cpu_container
     build:
       context: .
       dockerfile: Dockerfile.cpu
     env_file:
       - ../.envrc
     volumes:
-      - ..:/workspace
-    working_dir: /workspace
+      - $PWD/data/input:/kaggle/input
+      - $PWD:/kaggle/working
+    working_dir: /kaggle/working
     tty: true

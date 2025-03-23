@@ -2,13 +2,15 @@ services:
   kaggle_env_gpu:
     build:
       context: .
-      dockerfile: Dockerfile.gpu
+      dockerfile: Dockerfile
     env_file:
       - ../.envrc
     volumes:
-      - ..:/workspace
-    working_dir: /workspace
+      - $PWD/input:/kaggle/input
+      - $PWD:/kaggle/working
+    working_dir: /kaggle/working
     tty: true
+    container_name: kaggle_project_container
     deploy:
       resources:
         reservations:

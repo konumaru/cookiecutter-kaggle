@@ -6,13 +6,13 @@ download_competition() {
     DIR_NAME=$1
 
     mkdir -p data/
-    mkdir -p data/raw
+    mkdir -p data/input
 
     # Download competition data
     kaggle competitions download -c "$DIR_NAME"
 
     # Unzip
-    unzip -o "$DIR_NAME.zip" -d "./data/raw"
+    unzip -o "$DIR_NAME.zip" -d "./data/input"
 
     # Remove zip
     rm "$DIR_NAME.zip" 
